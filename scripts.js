@@ -24,3 +24,13 @@ while (rows < numOfDivs){
     rows++;
 }
 
+
+//add hovering event listener
+
+//use forEach to select each grid div
+let gridColumns = document.querySelectorAll('.grids-cols');
+////how can I add event listener to an array?
+
+// // change the background to random color
+
+
