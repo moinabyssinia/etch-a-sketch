@@ -3,13 +3,14 @@
     height: 40px;
     margin: 5px 5px;
     background: blue;
+    border-radius: 4px;
 }
 .rowContainer{
     width: 80%;
     display: flex;
     flex-direction: row;
     float: left;
-    background: yellow;
+    background: rgb(226, 226, 213);
     justify-content: space-around;
     margin: auto 10%;
 }
@@ -17,7 +18,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 80px;
 }
-.changeToRed{
-    background-color: red;
+.changeToBlue{
+    background-color: blue;
+    /* transition-delay: 1s; */
 }

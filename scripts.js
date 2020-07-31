@@ -31,7 +31,13 @@ let gridColumns = document.querySelectorAll('.grids-cols');
 gridColumns.forEach(function(element){
     element.addEventListener('mouseenter', function(){
         element.style.backgroundColor = changeColor();
-    })
+    });
+    // tried adding a css class on mouseout but didnt work
+    element.addEventListener('mouseout', function(){
+        setTimeout(function(){
+            element.style.backgroundColor = 'blue';
+        }, 500);
+    });
 })
 
 // change the background to random color
@@ -41,10 +47,3 @@ const changeColor = function(){
 const generateNumbers = function(){
     return Math.ceil(Math.random()*255);
 }
-
-//create a disco of lights
-gridColumns.forEach(function(element){
-    setInterval(function(){
-        element.style.backgroundColor = changeColor();
-    }, 1000);
-})
