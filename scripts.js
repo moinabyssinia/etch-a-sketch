@@ -26,11 +26,25 @@ while (rows < numOfDivs){
 
 
 //add hovering event listener
-
 //use forEach to select each grid div
 let gridColumns = document.querySelectorAll('.grids-cols');
-////how can I add event listener to an array?
+gridColumns.forEach(function(element){
+    element.addEventListener('mouseenter', function(){
+        element.style.backgroundColor = changeColor();
+    })
+})
 
-// // change the background to random color
+// change the background to random color
+const changeColor = function(){
+    return `rgb(${generateNumbers()}, ${generateNumbers()}, ${generateNumbers()})`
+}
+const generateNumbers = function(){
+    return Math.ceil(Math.random()*255);
+}
 
-
+//create a disco of lights
+gridColumns.forEach(function(element){
+    setInterval(function(){
+        element.style.backgroundColor = changeColor();
+    }, 1000);
+})
