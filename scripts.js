@@ -7,9 +7,18 @@ const startButton = document.querySelector('.start-button');
 
 //add functionality to the button
 startButton.addEventListener('click', function(){
-    // oldDiv.style.display = 'none';
+    //refresh the screen
+    let rowContainer = document.querySelectorAll('.rowContainer');
+    rowContainer.forEach(function(element){
+        element.remove();
+    })
+    
+    //prompt for number of squares
     numOfDivs = Number(prompt("How many squares do you want per side?"));
+    cols = 0;
+    rows = 0;
     buildGrids();
+    oldDiv.style.display = 'inline';
 
     //add hovering event listener
     let gridColumns = document.querySelectorAll('.grids-cols');
@@ -21,7 +30,7 @@ startButton.addEventListener('click', function(){
         // tried adding a css class on mouseout but didnt work
         element.addEventListener('mouseout', function(){
             setTimeout(function(){
-                element.style.backgroundColor = 'blue';
+                element.style.backgroundColor = 'rgb(238, 226, 61)';
             }, 500);
         });
     })
