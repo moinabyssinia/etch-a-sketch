@@ -1,6 +1,7 @@
 let numOfDivs;
 let cols = 0;
 let rows = 0;
+let currentRGB;
 const oldDiv = document.querySelector('.container');
 const startButton = document.querySelector('.start-button');
 
@@ -14,7 +15,7 @@ startButton.addEventListener('click', function(){
     })
     
     //prompt for number of squares
-    numOfDivs = Number(prompt("How many squares do you want per side?"));
+    numOfDivs = Number(prompt("How many squares do you want per side?", 10));
     cols = 0;
     rows = 0;
     buildGrids();
@@ -24,19 +25,28 @@ startButton.addEventListener('click', function(){
     let gridColumns = document.querySelectorAll('.grids-cols');
 
     gridColumns.forEach(function(element){
+        let hoverCount = 0;
         element.addEventListener('mouseenter', function(){
-            element.style.backgroundColor = changeColor();
-        });
-        // tried adding a css class on mouseout but didnt work
-        element.addEventListener('mouseout', function(){
-            setTimeout(function(){
-                element.style.backgroundColor = 'rgb(238, 226, 61)';
-            }, 500);
+            if (hoverCount === 0){
+                currentRGB = [generateNumbers(), generateNumbers(), generateNumbers()];
+                element.style.backgroundColor = `rgb(${currentRGB[0]}, ${currentRGB[1]}, 
+                    ${currentRGB[2]})`;
+                console.log(hoverCount++);
+            }
+            else if (hoverCount === 9){
+                element.style.backgroundColor = 'rgb(0, 0, 0)';
+            }
+            else {
+                // element.style.backgroundColor = changeColor();
+                console.log(hoverCount++);
+                console.log(currentRGB);
+                currentRGB = [currentRGB[0]*0.9, currentRGB[1]*0.9, currentRGB[2]*0.9];
+                element.style.backgroundColor = `rgb(${currentRGB[0]}, ${currentRGB[1]}, 
+                    ${currentRGB[2]})`;
+            }
         });
     })
 })
-
-
 
 const buildGrids = function(){
     while (rows < numOfDivs){
@@ -59,7 +69,6 @@ const buildGrids = function(){
         rows++;
     }
 }
-
 
 // change the background to random color
 const changeColor = function(){
