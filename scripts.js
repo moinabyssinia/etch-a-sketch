@@ -27,17 +27,19 @@ startButton.addEventListener('click', function(){
     gridColumns.forEach(function(element){
         let hoverCount = 0;
         element.addEventListener('mouseenter', function(){
+            //change to random color on first pass
             if (hoverCount === 0){
                 currentRGB = [generateNumbers(), generateNumbers(), generateNumbers()];
                 element.style.backgroundColor = `rgb(${currentRGB[0]}, ${currentRGB[1]}, 
                     ${currentRGB[2]})`;
                 console.log(hoverCount++);
             }
+            //make it black on the 10th pass
             else if (hoverCount === 9){
                 element.style.backgroundColor = 'rgb(0, 0, 0)';
             }
             else {
-                // element.style.backgroundColor = changeColor();
+                //add 10% of black with every hover;
                 console.log(hoverCount++);
                 console.log(currentRGB);
                 currentRGB = [currentRGB[0]*0.9, currentRGB[1]*0.9, currentRGB[2]*0.9];
